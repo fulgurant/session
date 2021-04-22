@@ -10,7 +10,7 @@ import (
 type Options struct {
 	config    *Config
 	logger    *zap.Logger
-	datastore datastore.GetSetter
+	datastore datastore.Handler
 }
 
 func DefaultOptions(config *Config) (*Options, error) {
@@ -30,7 +30,7 @@ func (o *Options) WithLogger(value *zap.Logger) *Options {
 }
 
 // WithDataStore sets the datastore for the server
-func (o *Options) WithDataStore(value *datastore.GetSetter) *Options {
+func (o *Options) WithDataStore(value datastore.Handler) *Options {
 	o.datastore = value
 	return o
 }
