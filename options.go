@@ -1,8 +1,6 @@
 package session
 
 import (
-	"errors"
-
 	"github.com/fulgurant/datastore"
 	"go.uber.org/zap"
 )
@@ -13,14 +11,10 @@ type Options struct {
 	datastore datastore.Handler
 }
 
-func DefaultOptions(config *Config) (*Options, error) {
-	if config == nil {
-		return nil, errors.New("nil config not allowed")
-	}
-
+func DefaultOptions(config *Config) *Options {
 	return &Options{
 		config: config,
-	}, nil
+	}
 }
 
 // WithLogger sets the logger for the server
